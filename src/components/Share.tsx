@@ -26,7 +26,10 @@ const Share = () => {
   const previewURL = media ? URL.createObjectURL(media) : null;
 
   return (
-    <form className="p-4 flex gap-4" action={formData => shareAction(formData,settings)}>
+    <form
+      className="p-4 flex gap-4"
+      action={(formData) => shareAction(formData, settings)}
+    >
       <div className="relative w-10 h-10 rounded-full overflow-hidden">
         <Image path="general/avatar.png" alt="" w={100} h={100} tr={true} />
       </div>
@@ -37,7 +40,7 @@ const Share = () => {
           placeholder="what is happening"
           className="bg-transparent outline-none placeholder:text-textGray text-xl"
         />
-        {previewURL && (
+        {media?.type.includes("image") && previewURL && (
           <div className="relative rounded-xl overflow-hidden">
             <NextImage
               src={previewURL}
@@ -58,6 +61,23 @@ const Share = () => {
             >
               Edit
             </div>
+            <div
+              className=" absolute top-2 right-2 bg-black bg-opacity-50 text-white h-8 w-8 flex items-center justify-center rounded-full cursor-pointer font-bold text-sm"
+              onClick={() => setMedia(null)}
+            >
+              X
+            </div>
+          </div>
+        )}
+        {media?.type.includes("video") && previewURL && (
+          <div className="relative">
+            <video src={previewURL} controls />
+            <div
+              className=" absolute top-2 right-2 bg-black bg-opacity-50 text-white h-8 w-8 flex items-center justify-center rounded-full cursor-pointer font-bold text-sm"
+              onClick={() => setMedia(null)}
+            >
+              X
+            </div>
           </div>
         )}
         {isEditorOpen && previewURL && (
@@ -76,6 +96,7 @@ const Share = () => {
               onChange={handleMediaChange}
               className="hidden"
               id="file"
+              accept="image/*,video/*"
             />
             <label htmlFor="file">
               <Image
