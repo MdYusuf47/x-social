@@ -68,11 +68,14 @@ const menuList = [
 const LeftBar = () => {
   return (
     <div className="h-screen sticky top-0 flex flex-col justify-between pt-2 pb-8">
+      {/* LOGO MENU BUTTON */}
       <div className="flex flex-col gap-4 text-lg items-center xxl:items-start">
-        <Link href="/" className="p-2 rounded-full hover:bg-[#181818]">
+        {/* LOGO */}
+        <Link href="/" className="p-2 rounded-full hover:bg-[#181818] ">
           <Image path="icons/logo.svg" alt="logo" w={24} h={24} />
         </Link>
-        <div className="flex flex-col">
+        {/* MENU LIST */}
+        <div className="flex flex-col gap-4">
           {menuList.map((item) => (
             <Link
               href={item.link}
@@ -89,27 +92,29 @@ const LeftBar = () => {
             </Link>
           ))}
         </div>
+        {/* BUTTON */}
         <Link
-          href="/"
+          href="/compose/post"
           className="bg-white text-black rounded-full w-12 h-12 flex items-center justify-center xxl:hidden"
         >
           <Image path="icons/post.svg" alt="new post" w={24} h={24} />
         </Link>
         <Link
-          href="/"
+          href="/compose/post"
           className="hidden xxl:block bg-white text-black rounded-full font-bold py-2 px-20"
         >
           Post
         </Link>
       </div>
+      {/* USER */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 relative rounded-full overflow-hidden">
-            <Image path="/general/avatar.png" alt="avatar" w={100} h={100} tr={true} />
+            <Image path="/general/avatar.png" alt="lama dev" w={100} h={100} tr={true} />
           </div>
           <div className="hidden xxl:flex flex-col">
-            <span className="font-bold">User name</span>
-            <span className="text-sm text-textGray">@userName</span>
+            <span className="font-bold">Lama Dev</span>
+            <span className="text-sm text-textGray">@lamaWebDev</span>
           </div>
         </div>
         <div className="hidden xxl:block cursor-pointer font-bold">...</div>
