@@ -75,7 +75,7 @@ const LeftBar = () => {
           <Image path="icons/logo.svg" alt="logo" w={24} h={24} />
         </Link>
         {/* MENU LIST */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col">
           {menuList.map((item) => (
             <Link
               href={item.link}
