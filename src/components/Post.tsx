@@ -15,18 +15,18 @@ interface FileDetailsResponse {
   customMetadata?: { sensitive: boolean };
 }
 
-const Post = async ({ type }: { type?: "status" | "comment" }) => {
-  const getFileDetails = async (
-    fileId: string
-  ): Promise<FileDetailsResponse> => {
-    return new Promise((resolve, reject) => {
-      imagekit.getFileDetails(fileId, function (error, result) {
-        if (error) reject(error);
-        else resolve(result as FileDetailsResponse);
-      });
-    });
-  };
-  const fileDetails = await getFileDetails("67aa42c8432c4764161fb306");
+const Post = ({ type }: { type?: "status" | "comment" }) => {
+  // const getFileDetails = async (
+  //   fileId: string
+  // ): Promise<FileDetailsResponse> => {
+  //   return new Promise((resolve, reject) => {
+  //     imagekit.getFileDetails(fileId, function (error, result) {
+  //       if (error) reject(error);
+  //       else resolve(result as FileDetailsResponse);
+  //     });
+  //   });
+  // };
+  // const fileDetails = await getFileDetails("67aa42c8432c4764161fb306");
   return (
     <div className="p-4 border-y-[1px] border-borderGray">
       {/* POST TYPE */}
