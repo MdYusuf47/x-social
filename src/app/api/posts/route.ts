@@ -31,6 +31,7 @@ export async function GET(request: NextRequest) {
 
   const posts = await prisma.post.findMany({
     where: whereCondition,
+    include:{user:{select:{displayName:true,username:true,img:true}}},
     take: LIMIT,
     skip: (Number(page) - 1) * LIMIT,
   });
